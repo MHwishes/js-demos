@@ -43,6 +43,7 @@ function Promise(executor) {
 
 Promise.prototype.then= function(onFulfilled, onRejected){
   let self=this;
+  // 处理异步的问题
   if(self.status==='pending'){
     if(typeof onFulfilled==='function'){
       self.onResolvedCallbacks.push(onFulfilled);
@@ -51,6 +52,7 @@ Promise.prototype.then= function(onFulfilled, onRejected){
       self.onRejectedCallbacks.push(onRejected);
     }
   }
+  // 处理同步的问题
   if(self.status==='fulfilled'){
     if(typeof onFulfilled==='function'){
       onFulfilled(self.value)
