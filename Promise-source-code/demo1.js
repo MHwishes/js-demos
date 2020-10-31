@@ -1,13 +1,9 @@
 // 最基础的版本
 function Promise(executor) {
-  let self = this;
+  let self = this;  /* node 中全局中的this默认是一个空对象，浏览器中是window */ 
   this.status = 'pending';
   this.value = undefined;
   this.reason = undefined;
-
-  if (typeof executor !== 'function') {
-    throw new Error('传入的参数不是函数');
-  }
 
   function resolve(value) {
     if (self.status === 'pending') {
@@ -16,7 +12,7 @@ function Promise(executor) {
     }
   }
 
-  function reject(reason) {
+  function reject(reason) { /* 这是的this 是 global 对象 */
     if (self.status === 'pending') {
       self.status = 'rejected';
       self.reason = reason;
