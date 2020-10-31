@@ -54,3 +54,6 @@ const view = new View(viewModel);
 view.show();
 view.editDesc();
 model.setData({desc:'hi,ma hong'})
+
+// 页面发生change事件，触发editDesc事件，editDesc根据change元素的标记，触发viewModel对应的onChange事件。
+// 反之当model发生变化时，会触发viewModel中对应的onChange事件，viewModel动态的修改view的内容。
