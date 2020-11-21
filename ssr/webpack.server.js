@@ -6,7 +6,7 @@ const baseConfig = require('./webpack.base.js');
 const serverConfig = {
   target: 'node', // 排除node内置模块，fs、path
   mode: 'development',
-  entry: './src/server.js',
+  entry: './src/server/index.js',
   output: {
     filename: 'bundle.js',
     path: path.join(__dirname, 'build')
