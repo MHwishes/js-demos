@@ -1,7 +1,9 @@
 {
     "presets": [
       "@babel/preset-react",
-      "@babel/preset-env"
+      ["@babel/preset-env", {
+        "useBuiltIns":"usage"
+      }]
     ],
     "plugins": [
         [
@@ -13,3 +15,6 @@
     ]
 }
   
+//@babel/preset-env 加上 "useBuiltIns": "usage" 這個設定，以及安裝 @babel/polyfill。
+// 使用到 async/await，當 babel 將 async 轉換程式碼時，會用到 regeneratorRuntime ，然而會報錯「regeneratorRuntime is not defined」。
+// 們需要安裝 @babel/polyfill 讓它提供 regeneratorRuntime 的程式碼，以及設定 "useBuiltIns": "usage" ，讓 regeneratorRuntime 可以被引入到有使用到 async/await 程式碼的上方。

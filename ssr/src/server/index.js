@@ -3,17 +3,21 @@ import {renderToString} from 'react-dom/server'
 import { StaticRouter } from 'react-router-dom';
 import express from 'express'
 import { renderRoutes } from 'react-router-config';
+import { Provider } from "react-redux";
 import routes from '../routers'
+import store from '../store/store'
 
 const app = express()
-// 前端打包完的 静态资源
+// 前端打包完的 静态资源，通过这个就可以取到public 下的静态资源了
 app.use(express.static('public'));
 
 app.get('*', (req,res) =>{
-    const App=(
-     <StaticRouter location={req.path}>
-      {renderRoutes(routes)}
-     </StaticRouter>
+const App=(     
+  <Provider store={store}>
+    <StaticRouter location={req.path}>
+     {renderRoutes(routes)}
+    </StaticRouter>
+  </Provider>
  );
 
 const html=`
