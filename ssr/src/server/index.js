@@ -29,6 +29,12 @@ const render = (req, store) => {
     </head>
     <body>
     <div id="app">${renderToString(App)}</div>
+    <!-- 从服务器端拿到脱水的数据状态 -->
+    <script>
+      window.context = {
+         state: ${JSON.stringify(store.getState())}
+      }
+      </script>
     <script src="/index.js"></script>
     </body>
     </html>
