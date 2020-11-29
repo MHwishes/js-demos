@@ -5,6 +5,7 @@ import { renderRoutes } from 'react-router-config';
 import routes from '../routers';
 
 const App = function() {
+  console.log("I am client");
   return (
     <BrowserRouter>
       {renderRoutes(routes)}

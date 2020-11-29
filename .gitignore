@@ -1,2 +1,5 @@
 ssr/node_modules
 ssr/build/
+ssr/public/index.js
+nextjs-blog/node_modules
+nextjs-blog/.next
