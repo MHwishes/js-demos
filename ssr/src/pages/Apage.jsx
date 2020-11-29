@@ -21,4 +21,8 @@ const PageA = () => {
   );
 };
 
+PageA.getInitialData = async (store) => {
+  return store.dispatch(fetchUsers());
+};
+
 export default PageA;
