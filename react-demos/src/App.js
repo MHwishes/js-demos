@@ -1,10 +1,10 @@
 import './App.css';
-import { Demo1 } from './components/demo1.jsx'
+import { Demo1 as FakeUseState } from './components/FakeUseState.jsx'
 
 function App() {
   return (
     <>
-     <Demo1/>
+     <FakeUseState/>
     </>
   );
 }
