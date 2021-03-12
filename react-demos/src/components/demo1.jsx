@@ -1,39 +1,47 @@
 import React from 'react';
 import { render } from '../index.js';
 
-let state;
-const useState = (initialValue) => {
-  state = state || initialValue;
-  // let state = initialValue;
-  function setState(newState) {
-    console.log(
-      '%c 🥪 newState: ',
-      'font-size:20px;background-color: #93C0A4;color:#fff;',
-      newState
-    );
-    state = newState;
-    render(); // 模拟 reRender，这一行不需要关心
+const states = [];
+let cursor = 0;
+
+function useState(initialState) {
+  const currenCursor = cursor;
+
+  states[currenCursor] = states[currenCursor] || initialState;
+
+  function setState(newState: T) {
+    states[currenCursor] = newState;
+    render();
+    cursor = 0;
   }
-  console.log(
-    '%c 🥟 state: ',
-    'font-size:20px;background-color: #F5CE50;color:#fff;',
-    state
-  );
-  return [state, setState];
-};
+
+  ++cursor;
+
+  return [states[currenCursor], setState];
+}
 
 export const Demo1 = () => {
-  const [count, setCount] = useState(0);
+  const [count1, setCount1] = useState(0);
+  const [count2, setCount2] = useState(10);
 
   return (
     <div>
-      <div>{count}</div>
+      <div>{count1}</div>
       <button
         onClick={() => {
-          setCount(count + 1);
+          setCount1(count1 + 1);
         }}
       >
-        点击
+        点击 +1
+      </button>
+
+      <div>{count2}</div>
+      <button
+        onClick={() => {
+          setCount2(count2 - 1);
+        }}
+      >
+        点击 -1
       </button>
     </div>
   );
