@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge, chrome=1">
+    <title>debounce</title>
+    <style>
+        #container-debounce {
+            width: 100%;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+            color: #fff;
+            background-color: #444;
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <p>
+            防抖 debounce：在事件被触发n秒后再执行回调，如果在这n秒内又被触发，则重新计时
+        </p>
+        <div id="container-debounce"></div>
+        <button id='cancel-button'>cancel debounce</button>
+    </div>
+
+
+    <div>
+        <p>
+            节流：规定在一个单位时间内，只能触发一次函数。如果这个单位时间内触发多次函数，只有一次生效。
+        </p>
+        <div id="container-debounce"></div>
+        <button id='cancel-button'>cancel debounce</button>
+    </div>
+
+    <script src="./debounce.js"></script>
+</body>
+
+</html>
